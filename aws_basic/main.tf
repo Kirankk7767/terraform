@@ -1,20 +1,20 @@
 variable "aws_access_key" {
-  default = "AKIAW5WU5HR3GQP5BU7A"
+  default = "AKIATBRPP77VP3ON2I4L"
 }
 variable "aws_secret_key" {
-  default = "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"
+  default = "N8fuEzBQx8RSJJEfDkY0LS1akuXSCoqpzNv81gwK"
 }
 variable "aws_ami" {
   default = "ami-0327f51db613d7bd2"
 }
 variable "aws_security_group_id" {
-  default = "sg-049ad320eae569b8f"
+  default = "sg-0c450499f49b3f38e"
 }
 variable "instance_type" {
   default = "t2.micro"
 }
 variable "key_name" {
-  default = "kk"
+  default = "kk1"
 }
 
 provider "aws" {
