@@ -1,8 +1,8 @@
 variable "aws_access_key" {
-  default = "AKIATBRPP77VAEYY3QW4"
+  default = "AKIATBRPP77VCQ632VGG"
 }
 variable "aws_secret_key" {
-  default = "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"
+  default = "34vVeYy8PWCRvmmSdGvjd+dD41jThtwp7F9SSCBT"
 }
 variable "aws_ami" {
   default = "ami-0327f51db613d7bd2"
