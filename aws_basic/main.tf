@@ -41,24 +41,24 @@ resource "aws_instance" "cda_instance" {
               net user admin InterOP@6264 /add
               net localgroup administrators admin /add
               
-              # Elastic Agent installation
+              # Elastic Agent installation with --force flag
               $ProgressPreference = 'SilentlyContinue'
               Invoke-WebRequest -Uri https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.15.5-windows-x86_64.zip -OutFile elastic-agent-8.15.5-windows-x86_64.zip
               Expand-Archive .\elastic-agent-8.15.5-windows-x86_64.zip -DestinationPath . 
               cd elastic-agent-8.15.5-windows-x86_64
-              .\elastic-agent.exe install
+              .\elastic-agent.exe install --force
               </powershell>
               EOF
 
   # Ensure RDP is enabled and accessible
   associate_public_ip_address = true
 
-  # Add a 60GB EBS disk using the correct ebs_block_device block
+  # Attach a 60GB EBS disk (using ebs_block_device for additional storage)
   ebs_block_device {
-    device_name = "xvdf"  # Correct device name for AWS Windows instances
-    volume_size = 60      # Size in GB
-    volume_type = "gp2"   # General Purpose SSD (gp2)
-    delete_on_termination = true
+    device_name = "xvdf"   # Device name for Windows instance (typically xvdf)
+    volume_size = 60       # Size in GB
+    volume_type = "gp2"    # General Purpose SSD (gp2)
+    delete_on_termination = true  # Ensure it is deleted when the instance is terminated
   }
 
   # Tags for the instance
@@ -71,3 +71,4 @@ resource "aws_instance" "cda_instance" {
 output "admin_password" {
   value = aws_instance.cda_instance.password_data
 }
+
