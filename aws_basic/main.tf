@@ -53,11 +53,11 @@ resource "aws_instance" "cda_instance" {
   # Ensure RDP is enabled and accessible
   associate_public_ip_address = true
 
-  # Add a 60GB EBS disk
-  block_device {
-    device_name = "/dev/sdh"  # You can change this device name if needed
-    volume_size = 60          # Size in GB
-    volume_type = "gp2"       # General Purpose SSD (gp2)
+  # Add a 60GB EBS disk using the correct ebs_block_device block
+  ebs_block_device {
+    device_name = "xvdf"  # Correct device name for AWS Windows instances
+    volume_size = 60      # Size in GB
+    volume_type = "gp2"   # General Purpose SSD (gp2)
     delete_on_termination = true
   }
 
@@ -71,5 +71,3 @@ resource "aws_instance" "cda_instance" {
 output "admin_password" {
   value = aws_instance.cda_instance.password_data
 }
-
-
