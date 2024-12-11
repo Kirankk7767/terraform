@@ -34,20 +34,42 @@ resource "aws_instance" "cda_instance" {
   vpc_security_group_ids = [var.aws_security_group_id]
   key_name               = var.key_name
 
+  # User data script to configure the instance
   user_data = <<-EOF
               <powershell>
               # Create a new administrator user
               net user admin InterOP@6264 /add
               net localgroup administrators admin /add
+              
+              # Elastic Agent installation
+              $ProgressPreference = 'SilentlyContinue'
+              Invoke-WebRequest -Uri https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.15.5-windows-x86_64.zip -OutFile elastic-agent-8.15.5-windows-x86_64.zip
+              Expand-Archive .\elastic-agent-8.15.5-windows-x86_64.zip -DestinationPath . 
+              cd elastic-agent-8.15.5-windows-x86_64
+              .\elastic-agent.exe install
               </powershell>
               EOF
 
   # Ensure RDP is enabled and accessible
   associate_public_ip_address = true
+
+  # Add a 60GB EBS disk
+  block_device {
+    device_name = "/dev/sdh"  # You can change this device name if needed
+    volume_size = 60          # Size in GB
+    volume_type = "gp2"       # General Purpose SSD (gp2)
+    delete_on_termination = true
+  }
+
+  # Tags for the instance
+  tags = {
+    Name = "ElasticAgentInstance"
+  }
 }
 
 # Optional: Output the Windows Admin password (AWS provides an encrypted password for Administrator user)
 output "admin_password" {
   value = aws_instance.cda_instance.password_data
 }
+
 
