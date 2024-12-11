@@ -25,7 +25,7 @@ output "public_dns" {
 # Output the instance state (running, stopped, etc.)
 output "instance_state" {
   description = "The state of the created EC2 instance"
-  value       = aws_instance.cda_instance.state
+  value       = aws_instance.cda_instance.instance_state
 }
 
 # Output the tags associated with the instance
@@ -61,5 +61,5 @@ output "instance_type" {
 # Output the EBS block device volume size
 output "ebs_volume_size" {
   description = "The size of the EBS block device attached to the instance"
-  value       = aws_instance.cda_instance.ebs_block_device[0].volume_size
+  value       = [for ebs in aws_instance.cda_instance.ebs_block_device : ebs.volume_size][0]
 }
