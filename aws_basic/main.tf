@@ -5,7 +5,7 @@ variable "aws_secret_key" {
   default = "34vVeYy8PWCRvmmSdGvjd+dD41jThtwp7F9SSCBT"
 }
 variable "aws_ami" {
-  default = "ami-0327f51db613d7bd2"
+  default = "ami-016028889ceebfc33"
 }
 variable "aws_security_group_id" {
   default = "sg-0c450499f49b3f38e"
