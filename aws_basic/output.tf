@@ -40,12 +40,6 @@ output "user_data_script" {
   value       = aws_instance.cda_instance.user_data
 }
 
-# Optional: Output the Windows Admin password if available
-output "admin_password" {
-  description = "The Windows Administrator password for the instance"
-  value       = aws_instance.cda_instance.password_data
-}
-
 # Output the instance AMI ID
 output "ami_id" {
   description = "The AMI ID used for the EC2 instance"
