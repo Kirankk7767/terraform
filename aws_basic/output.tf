@@ -28,7 +28,3 @@ output "instance_security_group_id" {
   value       = aws_instance.cda_instance.vpc_security_group_ids
 }
 
-output "admin_password" {
-  description = "The administrator password for the Windows EC2 instance"
-  value       = aws_instance.cda_instance.password_data
-}
