@@ -1,5 +1,5 @@
 # Output the admin password directly (since you know it from the user data script)
-output "admin_password" {
+output "adminn_password" {
   description = "The Windows Administrator password that was set in user_data"
   value       = "InterOP@6264"
 }
