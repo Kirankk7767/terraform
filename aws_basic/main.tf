@@ -1,13 +1,13 @@
 variable "aws_access_key" {
-  default = "AKIATBRPP77VCQGG"
+  default = "AKIAUGO4KIYDMZLFAZF5"
 }
 
 variable "aws_secret_key" {
-  default = "34vVeYy8PWCRvmmSdGvjd+dD41jThtwp7F9S"
+  default = "yE3LTpZeXuy+Luw332I0VygSHgbt1ebfi/l2p"
 }
 
 variable "aws_ami" {
-  default = "ami-016028889ceebfc33"  # Make sure this is a Windows AMI
+  default = "ami-019d9dc96246b7eb9"  # Make sure this is a Windows AMI
 }
 
 variable "aws_security_group_id" {
