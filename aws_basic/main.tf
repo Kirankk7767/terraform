@@ -3,7 +3,7 @@ variable "aws_access_key" {
 }
 
 variable "aws_secret_key" {
-  default = "a+6euxsQN5PWs5l4W9AJLuSIy47DAvMe0R5UgS"
+  default = "a+6euxsQN5PWs5l4W9AJLuSIy47DAv0R5UgS"
 }
 
 variable "aws_ami" {
