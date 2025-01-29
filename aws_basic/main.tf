@@ -1,17 +1,17 @@
 variable "aws_access_key" {
-  default = "AKIAUGO4KIYDMZLFAZF5"
+  default = "AKIAUGO4KIYDDL6MN7YN"
 }
 
 variable "aws_secret_key" {
-  default = "yE3LTpZeXuy+Luw332I0VygSHgbt1ebfi/l2p"
+  default = "a+6euxsQN5PWs5l4W9AJLuSIy47DAvMe0R5UgS"
 }
 
 variable "aws_ami" {
-  default = "ami-019d9dc96246b7eb9"  # Make sure this is a Windows AMI
+  default = "ami-02676461ac0a6ae2e"  # Make sure this is a Windows AMI
 }
 
 variable "aws_security_group_id" {
-  default = "sg-0c450499f49b3f38e"
+  default = "sg-01828edd45260b551"
 }
 
 variable "instance_type" {
